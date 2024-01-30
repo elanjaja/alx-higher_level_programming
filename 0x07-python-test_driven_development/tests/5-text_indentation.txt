@@ -1,0 +1,96 @@
+The ``5-text_indentation`` module
+======================
+
+Using ``text_indentation``
+------------------------
+
+This is a 5-text_indentation text file in reStructuredText format.  First import
+``text_indentation`` from the ``5-text_indentation`` module:
+
+        >>> text_indentation = __import__('5-text_indentation').text_indentation
+
+``text_indentation(text)`` prints a text with 2 new lines after each of these
+characters: ., ? and :
+
+Now use it:
+
+	>>> text_indentation({'age': 123, 'car': 'Tesla'})
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation(12345)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation(False)
+	Traceback (most recent call last):
+		...
+	TypeError: text must be a string
+
+	>>> text_indentation("My name is khairat. and I own a car: Tesla")
+	My name is khairat.
+	<BLANKLINE>
+	and I own a car:
+	<BLANKLINE>
+	Tesla
+
+	>>> text_indentation("")
+	Traceback (most recent call last):
+		...
+	ValueError: input must not be an empty string
+
+	>>> text_indentation(" ")
+	Traceback (most recent call last):
+		...
+	ValueError: input must not be an empty string
+
+	>>> text_indentation("       ")
+	Traceback (most recent call last):
+		...
+	ValueError: input must not be an empty string
+
+	>>> text_indentation("look up, it's raining: I'm back")
+	look up, it's raining:
+	<BLANKLINE>
+	I'm back
+
+	>>> text_indentation("apples, banana, cashew")
+	apples, banana, cashew
+
+	>>> text_indentation("apples, banana, cashew")
+	apples, banana, cashew
+
+	>>> text_indentation("   khairat   ")
+	khairat
+
+	>>> text_indentation("   kh? ai:   ra. t   ")
+	kh?
+	<BLANKLINE>
+	ai:
+	<BLANKLINE>
+	ra.
+	<BLANKLINE>
+	t
+
+	>>> text_indentation("Lorem ipsum;;?.;; dalor signum")
+	Lorem ipsum;;?.;; dalor signum
+
+	>>> text_indentation("? : .")
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	.
+
+	>>> text_indentation("kh.:???")
+	kh.:???
+
+	>>> text_indentation("Holberton.School")
+	Holberton.School
