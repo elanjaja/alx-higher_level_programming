@@ -1,0 +1,126 @@
+The ``2-matrix_divided`` module
+======================
+
+Using ``matrix_divided``
+------------------------
+
+This is a 2-matrix_divided text file in reStructuredText format.  First import
+``matrix_divided`` from the ``2-matrix_divided`` module:
+
+        >>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+``matrix_divided(matrix, div)`` returns the division of all elements of a matrix.
+
+Now use it:
+
+Use of int or float
+::
+
+	>>> matrix = [
+	...	[1, 2, 3],
+	...	[4, 5, 6]
+	... ]
+
+
+	>>> matrix_divided(matrix, 0)
+	Traceback (most recent call last):
+		...
+	ZeroDivisionError: division by zero
+
+
+
+	>>> matrix_divided(matrix, 3)
+	[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+
+
+	>>> matrix_divided(None, None)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+
+	>>> matrix_divided([], 90)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+
+	>>> matrix_divided(matrix, -5)
+	[[-0.2, -0.4, -0.6], [-0.8, -1.0, -1.2]]
+
+
+
+	>>> matrix_divided(matrix, -2.65)
+	[[-0.38, -0.75, -1.13], [-1.51, -1.89, -2.26]]
+
+
+
+	>>> matrix_divided([[], [3, 6, 8]], 2)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+Use of invalid type
+::
+
+	>>> invalid_m = [
+	...	"age",
+	...	False,
+	...	['mane', 300]
+	... ]
+	>>> matrix_divided(invalid_m, 1)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+
+	>>> m = [
+	...	["Khairat", 2, 3],
+	...	[4, 5, True]
+	... ]
+	>>> matrix_divided(m, 1)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+
+	>>> matrix = ('age', 'class', 'int')
+	>>> matrix_divided(matrix, 1)
+	Traceback (most recent call last):
+		...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+
+	>>> matrix = [
+	...	[1, 2, 3],
+	...	[4, 90, 78],
+	...	[9]
+	... ]
+	>>> matrix_divided(matrix, 1)
+	Traceback (most recent call last):
+		...
+	TypeError: Each row of the matrix must have the same size
+
+
+
+	>>> matrix = [
+	...	[2, 4,8],
+	...	[3,9, 0]
+	... ]
+	>>> matrix_divided(matrix, None)
+	Traceback (most recent call last):
+		...
+	TypeError: div must be a number
+
+
+
+	>>> matrix_divided(matrix, "hi")
+	Traceback (most recent call last):
+		...
+	TypeError: div must be a number
