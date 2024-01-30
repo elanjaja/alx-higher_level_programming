@@ -1,0 +1,88 @@
+The ``0-add_integer`` module
+======================
+
+Using ``add_integer`
+------------------
+
+This is an 0-add_integer text file in reStructuredText format.  First import
+``add_integer`` from the ``0-add_integer`` module:
+
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+``add_integer()`` returns the sum of two numbers which are of type int or float.
+
+Now use it:
+
+Addition of an integer and float.
+::
+
+	>>> add_integer(0.121, 98)
+	98
+
+	>>> add_integer(40.0, 98)
+	138
+
+	>>> add_integer(40.0, 0.0123456789)
+        40
+
+	>>> add_integer(-1.986, +20)
+	19
+
+Addition of invalid type and an integer:
+::
+
+	>>> add_integer("", 98)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(40.0, [1, 2, 3])
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	>>> add_integer(" 468  ", 100.76401)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(" 468  ", {'name': "Khairat", 'age': 100})
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(23)
+	121
+
+	>>> add_integer((1, 45, 90), None)
+	Traceback (most recent call last):
+		...
+	TypeError: a must be an integer
+
+	>>> add_integer(-100, True)
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	>>> add_integer(-100, None)
+	Traceback (most recent call last):
+		...
+	TypeError: b must be an integer
+
+	>>> add_integer(2.786, 7.90)
+	9
+
+	>>> add_integer(1e308, 1e308)
+	Traceback (most recent call last):
+		...
+	OverflowError: float overflow
+
+	>>> add_integer(-1e308, -1e308)
+	Traceback (most recent call last):
+		...
+	OverflowError: float overflow
