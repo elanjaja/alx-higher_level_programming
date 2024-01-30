@@ -1,0 +1,92 @@
+The ``3-say_my_name`` module
+======================
+
+Using ``say_my_name``
+------------------------
+
+This is a 3-say_my_name text file in reStructuredText format.  First import
+``say_my_name`` from the ``3-say_my_name`` module:
+
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+``say_my_name(first_name, last_name="")`` prints My name is <first name> <last name>
+
+Now use it:
+
+	>>> first_name = ("khairat", 700)
+	>>> say_my_name(first_name, last_name="")
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+
+	>>> first_name = "khairat"
+	>>> last_name = {'age': 50, 'size': 70}
+	>>> say_my_name(first_name, last_name)
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+
+
+	>>> say_my_name(None, None)
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+
+	>>> say_my_name("   Bob   ", None)
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+
+
+	>>> say_my_name(['first name'], {'last name'})
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+
+	>>> say_my_name("   Bob   ")
+	My name is    Bob    
+
+	>>> say_my_name("khairat", "adesina")
+	My name is khairat adesina
+
+	>>> say_my_name(456, '')
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+	>>> say_my_name(True, False)
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string
+
+	>>> say_my_name()
+	Traceback (most recent call last):
+		...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+	>>> say_my_name("", False)
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string
+
+	>>> say_my_name("khairat")
+	My name is khairat 
+
+	>>> say_my_name("khairat", "123")
+	Traceback (most recent call last):
+		...
+	TypeError: last_name must be a string containing letters
+
+	>>> say_my_name("123", "khairat")
+	Traceback (most recent call last):
+		...
+	TypeError: first_name must be a string containing letters
+
+	>>> say_my_name("khairat", "")
+	My name is khairat 
+
+	>>> say_my_name("", "khairat")
+	My name is  khairat
