@@ -1,0 +1,50 @@
+The ``1-my_list`` module
+======================
+
+Using ``MyList``
+-------------------
+
+This is an 1-my_list  text file in reStructuredText format.  First import
+``MyList`` from the ``1-my_list`` module:
+
+    >>> MyList = __import__('1-my_list').MyList
+
+Now use it:
+
+	>>> my_list = MyList([7, 9, 90, 1, -7, 8])
+	>>> my_list.print_sorted()
+	[-7, 1, 7, 8, 9, 90]
+
+	>>> empty_list = MyList([])
+	>>> empty_list.print_sorted()
+	[]
+
+	>>> single_list = MyList([45])
+	>>> single_list.print_sorted()
+	[45]
+
+	>>> negative_list = MyList([-7, -2, -98, -9])
+	>>> negative_list.print_sorted()
+	[-98, -9, -7, -2]
+
+	>>> dup_list = MyList([6, 6, 6])
+	>>> dup_list.print_sorted()
+	[6, 6, 6]
+
+	>>> none = MyList("meee")
+	>>> none.print_sorted()
+	Traceback (most recent call last):
+		...
+	ValueError: Input must be a list of numbers.
+
+	>>> none_list = MyList((1, 9.88))
+	>>> none_list.print_sorted()
+	Traceback (most recent call last):
+		...
+	ValueError: Input must be a list of numbers.
+
+	>>> none = MyList('1')
+	>>> none.print_sorted()
+	Traceback (most recent call last):
+		...
+	ValueError: Input must be a list of numbers.
