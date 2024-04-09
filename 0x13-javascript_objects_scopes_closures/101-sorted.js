@@ -1,21 +1,17 @@
 #!/usr/bin/node
+const dict = require('./101-data').dict;
 
-// imports a dictionary of occurrences by user id and computes a dictionary of user ids by occurrence.
-
-const data = require('./101-data.js');
-const dict = data.dict;
-
-let userId = {}
-for (const key in dict) {
-	const occur = dict[key];
-	if (Array.isArray(occur)) {
-		for (const id of occur) {
-			if (!userId[id]) {
-				userId[id] = [];
-			}
-			userId[id].push(key);
-		}
-	}
+const totalist = Object.entries(dict);
+const vals = Object.values(dict);
+const valsUniq = [...new Set(vals)];
+const newDict = {};
+for (const j in valsUniq) {
+  const list = [];
+  for (const k in totalist) {
+    if (totalist[k][1] === valsUniq[j]) {
+      list.unshift(totalist[k][0]);
+    }
+  }
+  newDict[valsUniq[j]] = list;
 }
-
-console.log(userId);
+console.log(newDict);
