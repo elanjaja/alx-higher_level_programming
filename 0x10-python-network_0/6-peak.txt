@@ -1,2 +1,1 @@
-# complexity of your algorithm - def find_peak(list_of_integers)
-O(log(n))
+O(n)
